@@ -8,11 +8,11 @@ namespace BookStoreTest.MediatR.Author.Commands.Add
 {
     public class AddAuthorHandler : IRequestHandler<AddAuthorCommand, Models.Author>
     {
-        public AuthorsRepository countryRepo;
+        public AuthorsRepository authorsRepository;
 
-        public AddAuthorHandler(AuthorsRepository _countryRepo)
+        public AddAuthorHandler(AuthorsRepository _authorsRepository)
         {
-            countryRepo = _countryRepo;
+            authorsRepository = _authorsRepository;
         }
 
         public async Task<Models.Author> Handle(AddAuthorCommand request, CancellationToken cancellationToken)
@@ -23,7 +23,7 @@ namespace BookStoreTest.MediatR.Author.Commands.Add
                 FirstName = request.FirstName,
                 LastName= request.LastName
             };
-            await countryRepo.AddAsync(country, cancellationToken);
+            await authorsRepository.AddAsync(country, cancellationToken);
             return country;
         }
 

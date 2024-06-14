@@ -8,16 +8,16 @@ namespace BookStoreTest.MediatR.Author.Commands.Delete
 {
     public class DeleteAuthorHandler : IRequestHandler<DeleteAuthorCommand, bool>
     {
-        public AuthorsRepository countryRepo;
+        public AuthorsRepository authorsRepository;
 
-        public DeleteAuthorHandler(AuthorsRepository _countryRepo)
+        public DeleteAuthorHandler(AuthorsRepository _authorsRepository)
         {
-            countryRepo = _countryRepo;
+            authorsRepository = _authorsRepository;
         }
 
         public async Task<bool> Handle(DeleteAuthorCommand request, CancellationToken cancellationToken)
         {
-            return await countryRepo.DeleteByIdAsync(request.IdAuthor, cancellationToken);
+            return await authorsRepository.DeleteByIdAsync(request.IdAuthor, cancellationToken);
         }
 
 

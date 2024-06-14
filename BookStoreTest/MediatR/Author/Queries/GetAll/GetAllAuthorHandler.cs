@@ -7,16 +7,16 @@ namespace BookStoreTest.MediatR.Author.Queries.GetAll
 {
     public class GetAllAuthorHandler : IRequestHandler<GetAllAuthorQuery, IEnumerable<Models.Author>>
     {
-        public AuthorsRepository countryRepo;
+        public AuthorsRepository authorsRepository;
 
-        public GetAllAuthorHandler(AuthorsRepository _countryRepo)
+        public GetAllAuthorHandler(AuthorsRepository _authorsRepository)
         {
-            countryRepo = _countryRepo;
+            authorsRepository = _authorsRepository;
         }
 
         public async Task<IEnumerable<Models.Author>> Handle(GetAllAuthorQuery request, CancellationToken cancellationToken)
         {
-            return await countryRepo.GetAllAsync(cancellationToken);
+            return await authorsRepository.GetAllAsync(cancellationToken);
         }
     }
 }

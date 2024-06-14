@@ -7,11 +7,11 @@ namespace BookStoreTest.MediatR.Author.Commands.Edit
 {
     public class EditAuthorHandler : IRequestHandler<EditAuthorCommand, Models.Author>
     {
-        public AuthorsRepository countryRepo;
+        public AuthorsRepository authorsRepository;
 
-        public EditAuthorHandler(AuthorsRepository _countryRepo)
+        public EditAuthorHandler(AuthorsRepository _authorsRepository)
         {
-            countryRepo = _countryRepo;
+            authorsRepository = _authorsRepository;
         }
 
 
@@ -23,7 +23,7 @@ namespace BookStoreTest.MediatR.Author.Commands.Edit
                 FirstName = request.FirstName,
                 LastName = request.LastName
             };
-            return await countryRepo.UpdateAsync(country, cancellationToken);
+            return await authorsRepository.UpdateAsync(country, cancellationToken);
         }
     }
 }
